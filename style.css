@@ -330,6 +330,12 @@ body {
 	}
 }
 
+@media only screen and (max-width: 768px) {
+	.testimony-box {
+		flex-direction: column;
+	}
+}
+
 .about-content {
 	padding: 0 4rem;
 	text-align: justify;
@@ -365,6 +371,12 @@ body {
 	color: #424242;
 	font-size: 1.2rem;
 	font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+	.principe {
+		flex-direction: column;
+	}
 }
 
 .auth-page {
@@ -408,7 +420,9 @@ body {
 }
 
 .auth-form input {
+	width: 100%;
 	color: #424242;
+	background-color: #FFFFFF;
 	font-size: 1rem;
 	font-weight: 400;
 	font-family: "Poppins", sans-serif;
