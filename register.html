@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="./style.css">
+	<title>Register - CAteriNgz</title>
+</head>
+<body class="auth-page">
+	<div class="auth-bg">
+		<img src="./img/auth.jpg" alt="CAteriNgz">
+	</div>
+	<div class="auth-wrap">
+		<h1 class="heading">CAteriNgz</h1>
+		<form name="auth-form" class="auth-form">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name">
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email">
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone number</label>
+				<input type="tel" id="phone" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="birth">Date of birth</label>
+				<input type="date" id="birth" name="birth">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password">
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm password</label>
+				<input type="password" id="confirmPassword" name="confirmPassword">
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="agree" id="agree">
+				<label for="agree">I agree to the <a href="#">terms and condition</a></label>
+			</div>
+			<button type="submit">Register</button>
+		</form>
+	</div>
+	<script>
+		document.forms['auth-form'].addEventListener('submit', function(event) {
+			event.preventDefault();
+	
+			const name = this['name'].value;
+			const email = this['email'].value;
+			const phone = this['phone'].value;
+			const birth = this['birth'].value;
+			const password = this['password'].value;
+			const confirmPassword = this['confirmPassword'].value;
+			const agree = this['agree'].checked;
+			
+			if (name.trim() === '') {
+				alert('Name is required');
+				return false;
+			}
+	
+			const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			if (!emailPattern.test(email)) {
+				alert('Invalid email format');
+				return false;
+			}
+	
+			const phonePattern = /^\+?[0-9]{7,15}$/;
+			if (!phonePattern.test(phone)) {
+				alert('Invalid phone number');
+				return false;
+			}
+	
+			if (birth.trim() === '') {
+				alert('Date of birth is required');
+				return false;
+			}
+	
+			if (password.length < 6) {
+				alert('Password must be at least 6 characters');
+				return false;
+			}
+			if (password !== confirmPassword) {
+				alert('Passwords do not match');
+				return false;
+			}
+	
+			if (!agree) {
+				alert('You must agree to the terms and conditions');
+				return false;
+			}
+	
+			alert('Form submitted successfully!');
+		});
+	</script>
+</body>
+</html>
